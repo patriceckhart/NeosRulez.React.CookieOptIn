@@ -1,11 +1,31 @@
 prototype(Neos.Neos:Page) {
     head {
         cookieData = Neos.Fusion:Tag {
-            @position = 'before cookiemodal'
+            @position = 'start'
             tagName = 'script'
             attributes {
                 type = 'text/javascript'
                 src = '/cookiedata.js'
+            }
+        }
+        reactJs = Neos.Fusion:Tag {
+            @position = 'after cookieData'
+            tagName = 'script'
+            attributes {
+                type = 'text/javascript'
+                src = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/react/react.production.min.js'
+                }
+            }
+        }
+        reactDomJs = Neos.Fusion:Tag {
+            @position = 'after reactJs'
+            tagName = 'script'
+            attributes {
+                type = 'text/javascript'
+                src = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/react/react-dom.production.min.js'
+                }
             }
         }
         cookieOptInCss = NeosRulez.ScssParser:ScssFile
@@ -17,11 +37,11 @@ prototype(Neos.Neos:Page) {
         }
         cookiemodal = NeosRulez.React.CookieOptIn:Component.Modal
     }
-    cookieOptInJs = NeosRulez.JsMinifier:JsFile
-    cookieOptInJs {
-        @position = 'end'
-        source = 'resource://NeosRulez.React.CookieOptIn/Private/JavaScript/scripts.js'
-        inline = FALSE
-        outputFolder = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/'
-    }
+//    cookieOptInJs = NeosRulez.JsMinifier:JsFile
+//    cookieOptInJs {
+//        @position = 'end'
+//        source = 'resource://NeosRulez.React.CookieOptIn/Private/JavaScript/scripts.js'
+//        inline = FALSE
+//        outputFolder = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/'
+//    }
 }
