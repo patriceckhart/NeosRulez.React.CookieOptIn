@@ -1,0 +1,8 @@
+-
+  name: 'get cookies'
+  uriPattern: 'cookiedata.js'
+  defaults:
+    '@controller': 'Render'
+    '@package': 'NeosRulez.React.CookieOptIn'
+    '@action': 'cookieData'
+    '@format': 'js'

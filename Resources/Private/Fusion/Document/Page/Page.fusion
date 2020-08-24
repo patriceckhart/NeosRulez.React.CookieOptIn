@@ -1,5 +1,13 @@
 prototype(Neos.Neos:Page) {
     head {
+        cookieData = Neos.Fusion:Tag {
+            @position = 'before cookiemodal'
+            tagName = 'script'
+            attributes {
+                type = 'text/javascript'
+                src = '/cookiedata.js'
+            }
+        }
         cookieOptInCss = NeosRulez.ScssParser:ScssFile
         cookieOptInCss {
             source = 'resource://NeosRulez.React.CookieOptIn/Private/Styles/styles.scss'

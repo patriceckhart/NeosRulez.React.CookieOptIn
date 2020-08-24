@@ -3,11 +3,11 @@ var nrc_header = 'Wir verwenden Cookies';
 var nrc_teaser = 'Wir nutzen Cookies auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern.';
 var nrc_imprint_link = '/impressum';
 var nrc_privacy_link = '/datenschutz';
-var nrc_imprint_label = 'Impressum';
-var nrc_privacy_label = 'Datenschutz';
-var nrc_btn_all = 'Alle erlauben';
-var nrc_btn_essential = 'Nur Essenzielle';
-var nrc_btn_selected = 'Nur ausgewählte Cookies erlauben';
+// var nrc_imprint_label = 'Impressum';
+// var nrc_privacy_label = 'Datenschutz';
+// var nrc_btn_all = 'Alle erlauben';
+// var nrc_btn_essential = 'Nur Essenzielle';
+// var nrc_btn_selected = 'Nur ausgewählte Cookies erlauben';
 
 function init() {
     // console.log('init');
