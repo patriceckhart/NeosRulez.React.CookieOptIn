@@ -1,0 +1,5 @@
+NeosRulez:
+  React:
+    CookieOptIn:
+      revoke: true
+      metadata: 'resource://NeosRulez.React.CookieOptIn/Private/Metadata/'

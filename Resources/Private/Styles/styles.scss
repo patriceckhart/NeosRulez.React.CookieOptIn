@@ -1,0 +1,31 @@
+@mixin transition($property) { transition: all $property; -webkit-transition: all $property; -moz-transition: all $property; }
+#cookiebanner { background:rgba(0,0,0,0.9); position: fixed; width:100%; height:100%; z-index:1024; overflow:scroll;
+  .cookiegroup-toggle {
+    span { font-weight:bold; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
+  }
+  .cookies { display:none; font-size: 0.9em;
+    .cookie { border-bottom: 1px solid #ebebeb;
+      &:last-child { border:0; }
+    }
+  }
+  .cookiebanner-links {
+    a { margin-left:0.5em; }
+  }
+}
+#revoke { position: fixed; right:0; bottom:0; margin-right:2em; text-decoration: none; z-index:+3;
+  background:#ebebeb;
+  border-radius: 4px 4px 0 0; cursor: pointer; @include transition(0.2s);
+  padding:0.5em; padding-top:0.25em; padding-bottom:0.25em; font-size:0.8em;
+  &:hover { background: #cccccc; padding-bottom:0.5em; text-decoration: none; }
+  &.overflow { margin-bottom:-3em; }
+}
+@media (max-width: 992px) {
+  #cookiebanner { overflow-y: scroll;
+    .cookiebanner-links { text-align: left !important; margin-top:0.5em;
+      a { margin-left:0; margin-right:0.5em; }
+    }
+  }
+}
+@media print {
+  #cookiebanner { display:none !important; }
+}

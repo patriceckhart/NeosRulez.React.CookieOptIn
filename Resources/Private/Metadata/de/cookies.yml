@@ -1,0 +1,24 @@
+'essential':
+  label: 'Essenziell'
+  cookies:
+    '_nrc': # This cookie is required. Don't remove it from this file!
+      description: 'Dieser Cookie muss gesetzt werden um Ihre Cookie-Einstellungen abzurufen und Cookies entweder zu verbieten oder zu erlauben.'
+      lifetime: '1 Jahr'
+'analysis':
+  label: 'Analyse & Performance'
+  cookies:
+    '_ga':
+      description: 'Dieser Cookie wird von Google Analytics installiert. Dieser Cookie wird verwendet, um Besucher-, Sitzungs- und Kampagnendaten zu berechnen und die Nutzung der Website für den Analysebericht der Website zu verfolgen. Die Cookies speichern Informationen anonym und weisen eine zufällig generierte Nummer zu, um eindeutige Besucher zu identifizieren.'
+      lifetime: '2 Jahre'
+    '_gid':
+      description: 'Dieser Cookie wird von Google Analytics installiert. Dieser Cookie wird verwendet, um Informationen darüber zu speichern, wie Besucher eine Website nutzen, und hilft bei der Erstellung eines Analyseberichts über die Funktionsweise der Website. Die gesammelten Daten, einschließlich der Anzahl der Besucher, der Quelle, aus der sie stammen, und der Seiten, die in anonymer Form angezeigt werden.'
+      lifetime: '1 Tag'
+    '_gat':
+      description: 'Dieser Cookie wird von Google Universal Analytics installiert, um die Anforderungsrate zu drosseln und die Datenerfassung auf Websites mit hohem Datenverkehr zu begrenzen.'
+      lifetime: '1 Minute'
+'test':
+  label: 'Test'
+  cookies:
+    '_ta':
+      description: 'Testcookie'
+      lifetime: '1 Jahr'

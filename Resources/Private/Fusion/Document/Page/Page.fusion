@@ -1,0 +1,19 @@
+prototype(Neos.Neos:Page) {
+    head {
+        cookieOptInCss = NeosRulez.ScssParser:ScssFile
+        cookieOptInCss {
+            source = 'resource://NeosRulez.React.CookieOptIn/Private/Styles/styles.scss'
+            inline = FALSE
+            format = 'compressed'
+            outputFolder = 'resource://NeosRulez.React.CookieOptIn/Public/Styles/'
+        }
+        cookiemodal = NeosRulez.React.CookieOptIn:Component.Modal
+    }
+    cookieOptInJs = NeosRulez.JsMinifier:JsFile
+    cookieOptInJs {
+        @position = 'end'
+        source = 'resource://NeosRulez.React.CookieOptIn/Private/JavaScript/scripts.js'
+        inline = FALSE
+        outputFolder = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/'
+    }
+}

@@ -1,0 +1,17 @@
+Neos:
+  Flow:
+    mvc:
+      routes:
+        'NeosRulez.React.CookieOptIn':
+          position: 'start'
+  Neos:
+#    userInterface:
+#      translation:
+#        autoInclude:
+#          NeosRulez.React.CookieOptIn:
+#            - 'Component/*'
+#            - 'NodeTypes/*'
+#      defaultLanguage: 'de'
+    fusion:
+      autoInclude:
+        NeosRulez.React.CookieOptIn: true
