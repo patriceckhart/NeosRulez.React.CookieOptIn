@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="NeosRulez.React.CookieOptIn" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="header" xml:space="preserve">
+				<source>We use cookies</source>
+			</trans-unit>
+            <trans-unit id="body" xml:space="preserve">
+				<source>We use cookies on our website. Some of them are essential, while others help us to improve this website and your experience.</source>
+			</trans-unit>
+            <trans-unit id="btn_essential" xml:space="preserve">
+				<source>Only essentials</source>
+			</trans-unit>
+            <trans-unit id="btn_all" xml:space="preserve">
+				<source>Allow all</source>
+			</trans-unit>
+            <trans-unit id="btn_selected" xml:space="preserve">
+				<source>Allow only selected cookies</source>
+			</trans-unit>
+			<trans-unit id="btn_revoke" xml:space="preserve">
+				<source>Cookie settings</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>
