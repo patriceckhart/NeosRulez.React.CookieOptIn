@@ -30,13 +30,25 @@ prototype(Neos.Neos:Page) {
             outputFolder = 'resource://NeosRulez.React.CookieOptIn/Public/Styles/'
             @if.condition = NeosRulez.React.CookieOptIn:ModalHelper
         }
-        cookiemodal = NeosRulez.React.CookieOptIn:Component.Modal
+//        cookiemodal = NeosRulez.React.CookieOptIn:Component.Modal
 
         testscript = NeosRulez.React.CookieOptIn:Component.Test {
             @position = 'after cookiemodal'
         }
 
+        testscript2 = NeosRulez.React.CookieOptIn:Component.Test2 {
+            @position = 'after testscript'
+        }
+
+
+
     }
+}
+
+prototype(NeosRulez.React.CookieOptIn:Component.Test2) < prototype(Neos.Neos:ContentComponent) {
+    renderer = afx`
+        <script type="text/plain" data-cookieoptin="analysis">test = 'test';</script>
+    `
 }
 
 prototype(NeosRulez.React.CookieOptIn:Component.Test) < prototype(Neos.Neos:ContentComponent) {

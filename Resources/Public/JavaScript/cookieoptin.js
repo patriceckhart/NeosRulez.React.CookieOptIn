@@ -6,25 +6,43 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+function cookieWorker(ev, cookie) {
+    if (cookie == ev.getAttribute('data-cookieoptin')) {
+        console.log(ev, cookie);
+        var scriptElement = document.createElement('script');
+        if (ev.hasAttribute('src')) {
+            var attribute = ev.getAttribute('src');
+            scriptElement.src = attribute;
+        } else {
+            scriptElement.innerHTML = ev.innerHTML;
+        }
+        scriptElement.setAttribute('data-cookieoptin', cookie);
+        ev.after(scriptElement);
+        ev.remove();
+    }
+}
+
 function init() {
     var documentCookie = readCookie('_nrc');
     if (documentCookie) {
+        console.log(documentCookie);
         var a = document.querySelectorAll('[data-cookieoptin]');
         for (var i in a) {
             if (a.hasOwnProperty(i)) {
-                if (documentCookie == a[i].getAttribute('data-cookieoptin')) {
-                    // console.log('found');
-                    a[i].removeAttribute('type');
-                    var scriptElement = document.createElement('script');
-                    if (a[i].hasAttribute('src')) {
-                        var attribute = a[i].getAttribute('src');
-                        scriptElement.src = attribute;
-                    } else {
-                        var innerHtml = a[i].innerHTML;
-                        scriptElement.innerHTML = innerHtml;
-                    }
-                    a[i].after(scriptElement);
-                    a[i].remove();
+
+                var htmlElement = a[i];
+
+                if (documentCookie.includes(',')) {
+                    console.log('comma found in string');
+                    var cookiesArray = documentCookie.split(',');
+                    console.log(cookiesArray);
+                    cookiesArray.forEach(function (item, j) {
+                        return cookieWorker(a[i], '' + item);
+                    });
+                } else {
+                    console.log('no comma found in string');
+                    // cookieWorker(a[i], documentCookie);
+                    cookieWorker(a[i], '' + documentCookie);
                 }
             }
         }if (documentCookie == 'revoked') {
@@ -149,7 +167,7 @@ var Footer = function (_React$Component2) {
         value: function setEssential(e) {
             e.preventDefault();
             console.log('set essential');
-            document.cookie = "_nrc=essential";
+            document.cookie = '_nrc=essential';
             init();
         }
     }, {
@@ -157,7 +175,7 @@ var Footer = function (_React$Component2) {
         value: function setAll(e) {
             e.preventDefault();
             console.log('set all');
-            document.cookie = "_nrc=all";
+            document.cookie = '_nrc=all';
             init();
         }
     }, {

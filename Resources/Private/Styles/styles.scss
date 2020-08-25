@@ -1,5 +1,5 @@
 @mixin transition($property) { transition: all $property; -webkit-transition: all $property; -moz-transition: all $property; }
-#cookiebanner { background:rgba(0,0,0,0.9); position: fixed; width:100%; height:100%; z-index:1024; overflow:scroll;
+#cookiebanner { background:rgba(0,0,0,0.9); position: fixed; width:100%; height:100%; z-index:99999; top:0; left:0; overflow:scroll;
   .cookiegroup-toggle {
     span { font-weight:bold; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
   }
