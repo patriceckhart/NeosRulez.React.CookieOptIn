@@ -1,0 +1,23 @@
+'NeosRulez.React.CookieOptIn:Mixin.CookiePages':
+  abstract: true
+  properties:
+    is_imprint:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.is_privacy ? true : false'
+          group: 'neosrulez_react_cookieoptin_modal_settings'
+          position: 20
+    is_privacy:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          hidden: 'ClientEval:node.properties.is_imprint ? true : false'
+          group: 'neosrulez_react_cookieoptin_modal_settings'
+          position: 30

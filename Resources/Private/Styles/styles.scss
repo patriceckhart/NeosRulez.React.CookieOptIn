@@ -3,10 +3,11 @@
   .cookiegroup-toggle {
     span { font-weight:bold; cursor: pointer; -webkit-touch-callout: none; -webkit-user-select: none; -khtml-user-select: none; -moz-user-select: none; -ms-user-select: none; user-select: none; }
   }
-  .cookies { display:none; font-size: 0.9em;
+  .cookies { max-height: 0; overflow:hidden; font-size: 0.9em; @include transition(0.2s);
     .cookie { border-bottom: 1px solid #ebebeb;
       &:last-child { border:0; }
     }
+    &.open { max-height: 3000px; overflow: visible; @include transition(0.2s); }
   }
   .cookiebanner-links {
     a { margin-left:0.5em; }

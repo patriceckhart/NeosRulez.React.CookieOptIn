@@ -6,23 +6,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-var nrc_metadata = JSON.parse('{"essential":{"label":"Essenziell","cookies":{"_nrc":{"description":"Dieser Cookie muss gesetzt werden um Ihre Cookie-Einstellungen abzurufen und Cookies entweder zu verbieten oder zu erlauben.","lifetime":"1 Jahr"}}},"analysis":{"label":"Analyse & Performance","cookies":{"_ga":{"description":"Dieser Cookie wird von Google Analytics installiert. Dieser Cookie wird verwendet, um Besucher-, Sitzungs- und Kampagnendaten zu berechnen und die Nutzung der Website für den Analysebericht der Website zu verfolgen. Die Cookies speichern Informationen anonym und weisen eine zufällig generierte Nummer zu, um eindeutige Besucher zu identifizieren.","lifetime":"2 Jahre"},"_gid":{"description":"Dieser Cookie wird von Google Analytics installiert. Dieser Cookie wird verwendet, um Informationen darüber zu speichern, wie Besucher eine Website nutzen, und hilft bei der Erstellung eines Analyseberichts über die Funktionsweise der Website. Die gesammelten Daten, einschließlich der Anzahl der Besucher, der Quelle, aus der sie stammen, und der Seiten, die in anonymer Form angezeigt werden.","lifetime":"1 Tag"},"_gat":{"description":"Dieser Cookie wird von Google Universal Analytics installiert, um die Anforderungsrate zu drosseln und die Datenerfassung auf Websites mit hohem Datenverkehr zu begrenzen.","lifetime":"1 Minute"}}},"test":{"label":"Test","cookies":{"_ta":{"description":"Testcookie","lifetime":"1 Jahr"}}}}');
-var nrc_header = 'Wir verwenden Cookies';
-var nrc_teaser = 'Wir nutzen Cookies auf unserer Website. Einige von ihnen sind essenziell, während andere uns helfen, diese Website und Ihre Erfahrung zu verbessern.';
-var nrc_imprint_link = '/impressum';
-var nrc_privacy_link = '/datenschutz';
-// var nrc_imprint_label = 'Impressum';
-// var nrc_privacy_label = 'Datenschutz';
-// var nrc_btn_all = 'Alle erlauben';
-// var nrc_btn_essential = 'Nur Essenzielle';
-// var nrc_btn_selected = 'Nur ausgewählte Cookies erlauben';
-
 function init() {
-    // console.log('init');
     var documentCookie = readCookie('_nrc');
-    // console.log('documentCookie: ' + documentCookie);
     if (documentCookie) {
-        // names.split(',');
         var a = document.querySelectorAll('[data-cookieoptin]');
         for (var i in a) {
             if (a.hasOwnProperty(i)) {
@@ -42,7 +28,6 @@ function init() {
                 }
             }
         }if (documentCookie == 'revoked') {
-            // console.log('cookie is revoked');
             ReactDOM.render(React.createElement(CookieBanner, null), document.getElementById('neosrulez__cookieoptin'));
         } else {
             ReactDOM.render(React.createElement(Revoke, null), document.getElementById('neosrulez__cookieoptin'));
@@ -164,26 +149,16 @@ var Footer = function (_React$Component2) {
         value: function setEssential(e) {
             e.preventDefault();
             console.log('set essential');
-            // document.getElementById('cookiebanner').remove();
             document.cookie = "_nrc=essential";
             init();
-            // location.reload();
-            // ReactDOM.unmountComponentAtNode(
-            //     <CookieBanner />,document.getElementById('neosrulez__cookieoptin')
-            // );
         }
     }, {
         key: 'setAll',
         value: function setAll(e) {
             e.preventDefault();
             console.log('set all');
-            // document.getElementById('cookiebanner').remove();
             document.cookie = "_nrc=all";
             init();
-            // location.reload();
-            // ReactDOM.unmountComponentAtNode(
-            //     <CookieBanner />,document.getElementById('neosrulez__cookieoptin')
-            // );
         }
     }, {
         key: 'setSelected',
@@ -191,13 +166,8 @@ var Footer = function (_React$Component2) {
             e.preventDefault();
             console.log(settedCookies);
             console.log('set selected');
-            // document.getElementById('cookiebanner').remove();
             document.cookie = '_nrc=' + settedCookies.join(',');
             init();
-            // location.reload();
-            // ReactDOM.unmountComponentAtNode(
-            //     <CookieBanner />,document.getElementById('neosrulez__cookieoptin')
-            // );
         }
     }, {
         key: 'render',
@@ -279,16 +249,7 @@ var Revoke = function (_React$Component3) {
             e.preventDefault();
             console.log('revoke');
             document.cookie = "_nrc=revoked";
-            // document.getElementById('revoke').remove();
             init();
-            // location.reload();
-            // ReactDOM.unmountComponentAtNode(
-            //     <Revoke />,document.getElementById('neosrulez__cookieoptin')
-            // );
-            // ReactDOM.render(
-            //         <CookieBanner />,document.getElementById('neosrulez__cookieoptin')
-            // );
-            // location.reload();
         }
     }, {
         key: 'render',
@@ -372,10 +333,86 @@ var ToggleSwitch = function (_React$Component5) {
     return ToggleSwitch;
 }(React.Component);
 
+var selected_group = true;
+
+var CookieGroupItem = function (_React$Component6) {
+    _inherits(CookieGroupItem, _React$Component6);
+
+    function CookieGroupItem(props) {
+        _classCallCheck(this, CookieGroupItem);
+
+        var _this7 = _possibleConstructorReturn(this, (CookieGroupItem.__proto__ || Object.getPrototypeOf(CookieGroupItem)).call(this, props));
+
+        _this7.toggleGroup = _this7.toggleGroup.bind(_this7);
+        return _this7;
+    }
+
+    _createClass(CookieGroupItem, [{
+        key: 'toggleGroup',
+        value: function toggleGroup(group) {
+            console.log(group);
+            selected_group = selected_group;
+            document.querySelectorAll('.cookies').forEach(function (el) {
+                return el.classList.remove('open');
+            });
+            if (selected_group == group) {
+                document.getElementById('group_' + group).classList.remove('open');
+                selected_group = true;
+            } else {
+                document.getElementById('group_' + group).classList.add('open');
+                selected_group = group;
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            var _this8 = this;
+
+            return React.createElement(
+                'div',
+                { className: 'cookiegroup', key: this.props.group, 'data-cookiegroup': this.props.group },
+                React.createElement(
+                    'div',
+                    { className: 'row py-2 align-items-center' },
+                    React.createElement(
+                        'div',
+                        { className: 'col-8' },
+                        React.createElement(
+                            'div',
+                            { className: 'd-block cookiegroup-toggle' },
+                            React.createElement(
+                                'span',
+                                { key: this.props.group, onClick: function onClick() {
+                                        return _this8.toggleGroup('' + _this8.props.group);
+                                    } },
+                                this.props.title
+                            )
+                        )
+                    ),
+                    React.createElement(
+                        'div',
+                        { className: 'col-4 text-right' },
+                        React.createElement(ToggleSwitch, { identifier: this.props.group })
+                    )
+                ),
+                React.createElement(
+                    'div',
+                    { id: 'group_' + this.props.group, className: 'cookies' },
+                    this.props.cookieitem
+                )
+            );
+        }
+    }]);
+
+    return CookieGroupItem;
+}(React.Component);
+
 var items = [];
 
 for (var group in nrc_metadata) {
     var cookieitem = [];
+
+    var title = nrc_metadata[group]['label'];
 
     for (var cookies in nrc_metadata[group]['cookies']) {
         var cookiekey = cookies;
@@ -410,37 +447,7 @@ for (var group in nrc_metadata) {
         ));
     }
 
-    items.push(React.createElement(
-        'div',
-        { className: 'cookiegroup', key: group, 'data-cookiegroup': group },
-        React.createElement(
-            'div',
-            { className: 'row py-2 align-items-center' },
-            React.createElement(
-                'div',
-                { className: 'col-8' },
-                React.createElement(
-                    'div',
-                    { className: 'd-block cookiegroup-toggle' },
-                    React.createElement(
-                        'span',
-                        null,
-                        nrc_metadata[group]['label']
-                    )
-                )
-            ),
-            React.createElement(
-                'div',
-                { className: 'col-4 text-right' },
-                React.createElement(ToggleSwitch, { identifier: group })
-            )
-        ),
-        React.createElement(
-            'div',
-            { className: 'cookies' },
-            cookieitem
-        )
-    ));
+    items.push(React.createElement(CookieGroupItem, { group: group, title: title, cookieitem: cookieitem }));
 }
 
 init();

@@ -1,0 +1,32 @@
+'NeosRulez.React.CookieOptIn:Mixin.CookiePageSettings':
+  abstract: true
+  ui:
+    inspector:
+      tabs:
+        neosrulez_react_cookieoptin:
+          label: i18n
+          position: 99
+          icon: 'fas fa-cookie-bite'
+      groups:
+        neosrulez_react_cookieoptin_page_settings:
+          label: i18n
+          icon: 'fas fa-cookie-bite'
+          tab: 'neosrulez_react_cookieoptin'
+          position: 10
+          collapsed: false
+        neosrulez_react_cookieoptin_modal_settings:
+          label: i18n
+          icon: 'fas fa-cookie-bite'
+          tab: 'neosrulez_react_cookieoptin'
+          position: 15
+          collapsed: false
+  properties:
+    hide_modal:
+      type: boolean
+      defaultValue: false
+      ui:
+        label: i18n
+        reloadIfChanged: true
+        inspector:
+          group: 'neosrulez_react_cookieoptin_modal_settings'
+          position: 10

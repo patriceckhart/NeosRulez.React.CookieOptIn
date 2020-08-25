@@ -6,7 +6,6 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Yaml\Yaml;
 
 /**
- * Class Metadata
  *
  * @Flow\Scope("singleton")
  */
@@ -32,7 +31,7 @@ class MetadataService {
     }
 
     /**
-     * @return void
+     * @return string
      */
     public function get() {
         $metadata = $this->loadMetaData();

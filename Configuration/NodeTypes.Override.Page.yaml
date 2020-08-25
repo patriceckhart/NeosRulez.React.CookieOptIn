@@ -1,0 +1,4 @@
+'Neos.Neos:Document':
+  superTypes:
+    'NeosRulez.React.CookieOptIn:Mixin.CookiePageSettings': true
+    'NeosRulez.React.CookieOptIn:Mixin.CookiePages': true

@@ -1,0 +1,3 @@
+prototype(NeosRulez.React.CookieOptIn:ModalHelper) <  prototype(Neos.Fusion:Value) {
+    value = ${site.context.inBackend ? false : (node.properties.hide_modal ? false : true)}
+}
