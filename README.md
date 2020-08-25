@@ -4,12 +4,12 @@ A package to handle Cookie Opt-In for Neos CMS. Build with React.
 
 ## Installation
 
-The NeosRulez.React.CookieOptIn package is listed on packagist (https://packagist.org/packages/neosrulez/reactcookieoptin) - therefore you don't have to include the package in your "repositories" entry any more.
+The NeosRulez.React.CookieOptIn package is listed on packagist (https://packagist.org/packages/neosrulez/react-cookieoptin) - therefore you don't have to include the package in your "repositories" entry any more.
 
 Just add the following line to your require section:
 
 ```
-"neosrulez/reactcookieoptin": "*"
+"neosrulez/react-cookieoptin": "*"
 ```
 
 And the run this command to fetch the plugin:
