@@ -1,9 +1,11 @@
 {
-    "description": "",
+    "description": "A package which handles Cookie Opt-In for Neos CMS. Build with React.",
     "type": "neos-package",
     "name": "neosrulez/react-cookieoptin",
     "require": {
-        "neos/flow": "*"
+        "neos/neos": "*",
+        "neosrulez/scssparser": "*",
+        "neosrulez/jsminifier": "*"
     },
     "autoload": {
         "psr-4": {
