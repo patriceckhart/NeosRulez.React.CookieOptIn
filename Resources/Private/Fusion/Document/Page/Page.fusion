@@ -31,5 +31,28 @@ prototype(Neos.Neos:Page) {
             @if.condition = NeosRulez.React.CookieOptIn:ModalHelper
         }
         cookiemodal = NeosRulez.React.CookieOptIn:Component.Modal
+
+        testscript = NeosRulez.React.CookieOptIn:Component.Test {
+            @position = 'after cookiemodal'
+        }
+
+    }
+}
+
+prototype(NeosRulez.React.CookieOptIn:Component.Test) < prototype(Neos.Neos:ContentComponent) {
+    trackingcode = 'UA-58757035-11'
+    renderer = Neos.Fusion:Component {
+        trackingId = ${props.trackingcode}
+        code = Neos.Fusion:Join {
+            create = 'window.dataLayer = window.dataLayer || [];'
+            push = 'function gtag(){dataLayer.push(arguments);}'
+            date = 'gtag("js", new Date());'
+            config = ${'gtag("config", "' + props.trackingcode + '");'}
+        }
+
+        renderer = afx`
+            <script @if.render={props.trackingId} type="text/plain" data-cookieoptin="test" async src={"https://www.googletagmanager.com/gtag/js?id=" + props.trackingId}></script>
+            <script @if.render={props.trackingId} type="text/plain" data-cookieoptin="test">{props.code}</script>
+        `
     }
 }

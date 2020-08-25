@@ -4,7 +4,6 @@ function init() {
         var a = document.querySelectorAll('[data-cookieoptin]');
         for (var i in a) if (a.hasOwnProperty(i)) {
             if(documentCookie == a[i].getAttribute('data-cookieoptin')) {
-                // console.log('found');
                 a[i].removeAttribute('type');
                 var scriptElement = document.createElement('script');
                 if(a[i].hasAttribute('src')) {
