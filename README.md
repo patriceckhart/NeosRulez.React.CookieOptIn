@@ -22,7 +22,7 @@ composer update
 ## Neos Fusion
 
 Simply add the data attribute `data-cookieoptin` to your own tags. 
-If scripts should not be executed, the attribute `type="text/plain"` must also be added. These attributes are removed by the user when defining the cookie. These attributes are removed by the user when he defines the cookie.
+If scripts should not be executed, the attribute `type="text/plain"` must also be added. These attributes are removed by the user when defining the cookie.
 
 ```
 prototype(Acme.Package:CustomScript) < prototype(Neos.Neos:ContentComponent) {
