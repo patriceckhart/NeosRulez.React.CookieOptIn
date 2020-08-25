@@ -40,8 +40,6 @@ prototype(Neos.Neos:Page) {
             @position = 'after testscript'
         }
 
-
-
     }
 }
 

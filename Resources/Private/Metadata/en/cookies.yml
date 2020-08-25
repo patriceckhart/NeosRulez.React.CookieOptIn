@@ -16,9 +16,3 @@
     '_gat':
       description: 'These cookies are installed by Google Universal Analytics in order to reduce the request rate and limit data collection on websites with high data traffic.'
       lifetime: '1 minute'
-'test':
-  label: 'Test'
-  cookies:
-    '_ta':
-      description: 'Testcookie'
-      lifetime: '1 Jahr'

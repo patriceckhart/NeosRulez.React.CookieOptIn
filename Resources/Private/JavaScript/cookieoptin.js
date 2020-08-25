@@ -1,36 +1,38 @@
+function cookieWorkerProcess(ev) {
+    var scriptElement = document.createElement('script');
+    if(ev.hasAttribute('src')) {
+        var attribute = ev.getAttribute('src');
+        scriptElement.src = attribute;
+    } else {
+        scriptElement.innerHTML = ev.innerHTML;
+    }
+    scriptElement.setAttribute('data-cookieoptin', cookie);
+    ev.after(scriptElement);
+    ev.remove();
+}
+
 function cookieWorker(ev, cookie) {
     if(cookie == ev.getAttribute('data-cookieoptin')) {
-        console.log(ev, cookie);
-        var scriptElement = document.createElement('script');
-        if(ev.hasAttribute('src')) {
-            var attribute = ev.getAttribute('src');
-            scriptElement.src = attribute;
-        } else {
-            scriptElement.innerHTML = ev.innerHTML;
-        }
-        scriptElement.setAttribute('data-cookieoptin', cookie);
-        ev.after(scriptElement);
-        ev.remove();
+        cookieWorkerProcess(ev);
+    } else if (ev.getAttribute('data-cookieoptin') == 'essential') {
+        cookieWorkerProcess(ev);
+    } else if (cookie == 'all') {
+        cookieWorkerProcess(ev);
     }
 }
 
 function init() {
     var documentCookie = readCookie('_nrc');
     if(documentCookie) {
-        console.log(documentCookie);
         var a = document.querySelectorAll('[data-cookieoptin]');
         for (var i in a) if (a.hasOwnProperty(i)) {
 
             var htmlElement = a[i];
 
             if(documentCookie.includes(',')) {
-                console.log('comma found in string');
                 var cookiesArray = documentCookie.split(',');
-                console.log(cookiesArray);
                 cookiesArray.forEach((item, j) => cookieWorker(a[i], `${item}`));
             } else {
-                console.log('no comma found in string');
-                // cookieWorker(a[i], documentCookie);
                 cookieWorker(a[i], `${documentCookie}`);
             }
 
@@ -111,20 +113,19 @@ class Footer extends React.Component {
     }
     setEssential(e) {
         e.preventDefault();
-        console.log('set essential');
+
         document.cookie = '_nrc=essential';
         init();
     }
     setAll(e) {
         e.preventDefault();
-        console.log('set all');
+
         document.cookie = '_nrc=all';
         init();
     }
     setSelected(e) {
         e.preventDefault();
-        console.log(settedCookies);
-        console.log('set selected');
+
         document.cookie = '_nrc=' + settedCookies.join(',');
         init();
     }
@@ -157,7 +158,7 @@ class Revoke extends React.Component {
     }
     revoke(e) {
         e.preventDefault();
-        console.log('revoke');
+
         document.cookie = "_nrc=revoked";
         init();
     }
@@ -180,14 +181,13 @@ class ToggleSwitch extends React.Component {
         this.setter = this.setter.bind(this);
     }
     setter(cookieKey) {
-        console.log(`set: ${cookieKey}`);
+
         if(settedCookies.includes(`${cookieKey}`)) {
             const index = settedCookies.indexOf(`${cookieKey}`);
             settedCookies.splice(index, 1);
         } else {
             settedCookies.push(`${cookieKey}`);
         }
-        console.log(settedCookies);
     }
     render() {
         return <div className="custom-control custom-switch">
@@ -205,7 +205,6 @@ class CookieGroupItem extends React.Component {
         this.toggleGroup = this.toggleGroup.bind(this);
     }
     toggleGroup(group) {
-        console.log(group);
         selected_group = selected_group;
         document.querySelectorAll('.cookies').forEach(el => el.classList.remove('open'));
         if(selected_group == group) {

@@ -16,9 +16,3 @@
     '_gat':
       description: 'Dieser Cookie wird von Google Universal Analytics installiert, um die Anforderungsrate zu drosseln und die Datenerfassung auf Websites mit hohem Datenverkehr zu begrenzen.'
       lifetime: '1 Minute'
-'test':
-  label: 'Test'
-  cookies:
-    '_ta':
-      description: 'Testcookie'
-      lifetime: '1 Jahr'
