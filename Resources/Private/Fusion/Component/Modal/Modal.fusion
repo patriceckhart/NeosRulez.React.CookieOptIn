@@ -4,7 +4,7 @@ prototype(NeosRulez.React.CookieOptIn:Component.Modal) < prototype(Neos.Neos:Con
 
     renderer = afx`
         <div @if.render={props.renderModal} id="neosrulez__cookieoptin" ></div>
-        <Neos.Fusion:Tag @if.render={props.renderModal} tagName="script" attributes.src="/cookiedata.js" />
+        <NeosRulez.React.CookieOptIn:Plugin.CookieData />
         <Neos.Fusion:Tag @if.render={props.renderModal} tagName="script" @children="attributes.src" >
             <Neos.Fusion:ResourceUri path="resource://NeosRulez.React.CookieOptIn/Public/JavaScript/cookieoptin.min.js" />
         </Neos.Fusion:Tag>

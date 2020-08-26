@@ -73,7 +73,7 @@ class RenderController extends ActionController {
 
         $pages = ['imprint_label' => $imprint_label, 'privacy_label' => $privacy_label, 'imprint_url' => $imprint_url, 'privacy_url' => $privacy_url];
 
-        $js = "var nrc_metadata = JSON.parse('" . $cookies . "');
+        $js = "<script> var nrc_metadata = JSON.parse('" . $cookies . "');
 var nrc_header = '" . $this->translator->translateById('header', [], null, null, $sourceName = 'Component/Modal', $packageKey = 'NeosRulez.React.CookieOptIn') . "';
 var nrc_teaser = '" . $this->translator->translateById('body', [], null, null, $sourceName = 'Component/Modal', $packageKey = 'NeosRulez.React.CookieOptIn') . "';
 var nrc_imprint_link = '" . $pages['imprint_url'] . "';
@@ -82,8 +82,7 @@ var nrc_imprint_label = '" . $pages['imprint_label'] . "';
 var nrc_privacy_label = '" . $pages['privacy_label'] . "';
 var nrc_btn_all = '" . $this->translator->translateById('btn_all', [], null, null, $sourceName = 'Component/Modal', $packageKey = 'NeosRulez.React.CookieOptIn') . "';
 var nrc_btn_essential = '" . $this->translator->translateById('btn_essential', [], null, null, $sourceName = 'Component/Modal', $packageKey = 'NeosRulez.React.CookieOptIn') . "';
-var nrc_btn_selected = '" . $this->translator->translateById('btn_selected', [], null, null, $sourceName = 'Component/Modal', $packageKey = 'NeosRulez.React.CookieOptIn') . "';";
-        header('Content-Type: application/javascript; charset=utf-8');
+var nrc_btn_selected = '" . $this->translator->translateById('btn_selected', [], null, null, $sourceName = 'Component/Modal', $packageKey = 'NeosRulez.React.CookieOptIn') . "';</script>";
         return $js;
     }
 

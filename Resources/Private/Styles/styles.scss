@@ -5,6 +5,7 @@
   }
   .cookies { max-height: 0; overflow:hidden; font-size: 0.9em; @include transition(0.2s);
     .cookie { border-bottom: 1px solid #ebebeb;
+      .col-12 { word-break: break-all; }
       &:last-child { border:0; }
     }
     &.open { max-height: 3000px; overflow: visible; @include transition(0.2s); }

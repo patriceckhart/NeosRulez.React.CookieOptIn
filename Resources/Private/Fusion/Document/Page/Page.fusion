@@ -1,27 +1,5 @@
 prototype(Neos.Neos:Page) {
     head {
-        reactJs = Neos.Fusion:Tag {
-            @position = 'start'
-            tagName = 'script'
-            attributes {
-                type = 'text/javascript'
-                src = Neos.Fusion:ResourceUri {
-                    path = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/react/react.production.min.js'
-                }
-            }
-            @if.condition = NeosRulez.React.CookieOptIn:ModalHelper
-        }
-        reactDomJs = Neos.Fusion:Tag {
-            @position = 'after reactJs'
-            tagName = 'script'
-            attributes {
-                type = 'text/javascript'
-                src = Neos.Fusion:ResourceUri {
-                    path = 'resource://NeosRulez.React.CookieOptIn/Public/JavaScript/react/react-dom.production.min.js'
-                }
-            }
-            @if.condition = NeosRulez.React.CookieOptIn:ModalHelper
-        }
         cookieOptInCss = NeosRulez.ScssParser:ScssFile
         cookieOptInCss {
             source = 'resource://NeosRulez.React.CookieOptIn/Private/Styles/styles.scss'

@@ -1,9 +1,4 @@
 Neos:
-  Flow:
-    mvc:
-      routes:
-        'NeosRulez.React.CookieOptIn':
-          position: 'start'
   Neos:
     userInterface:
       translation:
