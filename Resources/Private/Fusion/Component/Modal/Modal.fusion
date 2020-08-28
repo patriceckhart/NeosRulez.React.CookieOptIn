@@ -10,12 +10,12 @@ prototype(NeosRulez.React.CookieOptIn:Component.Modal) < prototype(Neos.Neos:Con
         </Neos.Fusion:Tag>
     `
 
-    @cache {
-        mode = 'uncached'
-        context {
-            1 = 'site'
-            2 = 'node'
-            3 = 'documentNode'
-        }
-    }
+//    @cache {
+//        mode = 'uncached'
+//        context {
+//            1 = 'site'
+//            2 = 'node'
+//            3 = 'documentNode'
+//        }
+//    }
 }
