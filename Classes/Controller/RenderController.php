@@ -45,6 +45,7 @@ class RenderController extends ActionController {
 
     /**
      * @return void
+     * @Flow\SkipCsrfProtection
      */
     public function cookieDataAction() {
         $cookies = $this->metadataService->get();
