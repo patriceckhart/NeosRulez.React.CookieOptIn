@@ -21,7 +21,7 @@ function cookieWorker(ev, cookie) {
     }
 }
 
-function init() {
+function initCookieBanner() {
     var documentCookie = readCookie('_nrc');
     if(documentCookie) {
         var a = document.querySelectorAll('[data-cookieoptin]');
@@ -236,6 +236,8 @@ class CookieGroupItem extends React.Component {
 
 const items = [];
 
+var groupKey = 1;
+
 for(var group in nrc_metadata) {
     const cookieitem = [];
 
@@ -244,12 +246,14 @@ for(var group in nrc_metadata) {
     for(var cookies in nrc_metadata[group]['cookies']) {
         var cookiekey = cookies;
 
+        groupKey = groupKey + 1;
+
         for(var cookie in nrc_metadata[group]['cookies'][cookies]) {
             var cookiedescription = nrc_metadata[group]['cookies'][cookies]['description'];
             var cookielifetime = nrc_metadata[group]['cookies'][cookies]['lifetime'];
         }
 
-        cookieitem.push(<div className="cookie py-2" key={cookiekey} >
+        cookieitem.push(<div className="cookie py-2" key={groupKey} >
             <div className="row">
                 <div className="col-md-2 col-12">{cookiekey}</div>
                 <div className="col-md-8 col-8">{cookiedescription}</div>
@@ -258,7 +262,10 @@ for(var group in nrc_metadata) {
         </div>);
     }
 
-    items.push(<CookieGroupItem group={group} title={title} cookieitem={cookieitem} />);
+    console.log(groupKey);
+
+    items.push(<CookieGroupItem group={group} key={groupKey} title={title} cookieitem={cookieitem} />);
 }
 
-init();
+initCookieBanner();
+console.log('foo');

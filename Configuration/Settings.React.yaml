@@ -1,0 +1,4 @@
+NeosRulez:
+  ReactJs:
+    mode: 'production'
+    babel: false
