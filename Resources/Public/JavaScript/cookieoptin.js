@@ -29,7 +29,7 @@ function cookieWorker(ev, cookie) {
     }
 }
 
-function init() {
+function initCookieBanner() {
     var documentCookie = readCookie('_nrc');
     if (documentCookie) {
         var a = document.querySelectorAll('[data-cookieoptin]');
@@ -170,7 +170,7 @@ var Footer = function (_React$Component2) {
             e.preventDefault();
 
             document.cookie = '_nrc=essential';
-            init();
+            initCookieBanner();
         }
     }, {
         key: 'setAll',
@@ -178,7 +178,7 @@ var Footer = function (_React$Component2) {
             e.preventDefault();
 
             document.cookie = '_nrc=all';
-            init();
+            initCookieBanner();
         }
     }, {
         key: 'setSelected',
@@ -186,7 +186,7 @@ var Footer = function (_React$Component2) {
             e.preventDefault();
 
             document.cookie = '_nrc=' + settedCookies.join(',');
-            init();
+            initCookieBanner();
         }
     }, {
         key: 'render',
@@ -268,7 +268,7 @@ var Revoke = function (_React$Component3) {
             e.preventDefault();
 
             document.cookie = "_nrc=revoked";
-            init();
+            initCookieBanner();
         }
     }, {
         key: 'render',
@@ -426,6 +426,8 @@ var CookieGroupItem = function (_React$Component6) {
 
 var items = [];
 
+var groupKey = 1;
+
 for (var group in nrc_metadata) {
     var cookieitem = [];
 
@@ -434,6 +436,8 @@ for (var group in nrc_metadata) {
     for (var cookies in nrc_metadata[group]['cookies']) {
         var cookiekey = cookies;
 
+        groupKey = groupKey + 1;
+
         for (var cookie in nrc_metadata[group]['cookies'][cookies]) {
             var cookiedescription = nrc_metadata[group]['cookies'][cookies]['description'];
             var cookielifetime = nrc_metadata[group]['cookies'][cookies]['lifetime'];
@@ -441,7 +445,7 @@ for (var group in nrc_metadata) {
 
         cookieitem.push(React.createElement(
             'div',
-            { className: 'cookie py-2', key: cookiekey },
+            { className: 'cookie py-2', key: groupKey },
             React.createElement(
                 'div',
                 { className: 'row' },
@@ -464,7 +468,7 @@ for (var group in nrc_metadata) {
         ));
     }
 
-    items.push(React.createElement(CookieGroupItem, { group: group, title: title, cookieitem: cookieitem }));
+    items.push(React.createElement(CookieGroupItem, { group: group, key: groupKey, title: title, cookieitem: cookieitem }));
 }
 
-init();
+initCookieBanner();

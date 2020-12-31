@@ -115,19 +115,19 @@ class Footer extends React.Component {
         e.preventDefault();
 
         document.cookie = '_nrc=essential';
-        init();
+        initCookieBanner();
     }
     setAll(e) {
         e.preventDefault();
 
         document.cookie = '_nrc=all';
-        init();
+        initCookieBanner();
     }
     setSelected(e) {
         e.preventDefault();
 
         document.cookie = '_nrc=' + settedCookies.join(',');
-        init();
+        initCookieBanner();
     }
     render() {
         return <div><div className="row align-items-center">
@@ -160,7 +160,7 @@ class Revoke extends React.Component {
         e.preventDefault();
 
         document.cookie = "_nrc=revoked";
-        init();
+        initCookieBanner();
     }
     render() {
         return <a href="/revoke" id="revoke" onClick={this.revoke} >Cookie-Einstellungen</a>;
@@ -262,10 +262,7 @@ for(var group in nrc_metadata) {
         </div>);
     }
 
-    console.log(groupKey);
-
     items.push(<CookieGroupItem group={group} key={groupKey} title={title} cookieitem={cookieitem} />);
 }
 
 initCookieBanner();
-console.log('foo');
