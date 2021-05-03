@@ -1,21 +1,43 @@
-prototype(NeosRulez.React.CookieOptIn:Component.Modal) < prototype(Neos.Neos:ContentComponent) {
+prototype(NeosRulez.React.CookieOptIn:Component.Modal) < prototype(Neos.Fusion:Component) {
 
-    renderModal = NeosRulez.React.CookieOptIn:ModalHelper
+    renderModal = NeosRulez.React.CookieOptIn:Component.Modal.Script
 
     renderer = afx`
         <div @if.render={props.renderModal} id="neosrulez__cookieoptin" ></div>
-        <NeosRulez.React.CookieOptIn:Plugin.CookieData />
+        <NeosRulez.React.CookieOptIn:Component.Modal.Script />
         <Neos.Fusion:Tag @if.render={props.renderModal} tagName="script" @children="attributes.src" >
             <Neos.Fusion:ResourceUri path="resource://NeosRulez.React.CookieOptIn/Public/JavaScript/cookieoptin.js" />
         </Neos.Fusion:Tag>
     `
+}
 
-//    @cache {
-//        mode = 'uncached'
-//        context {
-//            1 = 'site'
-//            2 = 'node'
-//            3 = 'documentNode'
-//        }
-//    }
+prototype(NeosRulez.React.CookieOptIn:Component.Modal.Script) < prototype(Neos.Fusion:Component) {
+
+    @context.imprint = ${q(site).children('[instanceof Neos.Neos:Document]').filter('[is_imprint = true]').get(0)}
+    @context.privacy = ${q(site).children('[instanceof Neos.Neos:Document]').filter('[is_privacy = true]').get(0)}
+
+    imprintLink = Neos.Neos:NodeUri {
+        node = ${imprint}
+    }
+    privacyLink = Neos.Neos:NodeUri {
+        node = ${privacy}
+    }
+
+    cookies = NeosRulez.React.CookieOptIn:Class.Cookie
+
+    renderer = afx`
+        <script>{"
+            var nrc_metadata = JSON.parse(" +  props.cookies + ");
+            var nrc_header = '" + I18n.translate('NeosRulez.React.CookieOptIn:Component.Modal:header') + "';
+            var nrc_teaser = '" + I18n.translate('NeosRulez.React.CookieOptIn:Component.Modal:body') + "';
+            var nrc_imprint_link = '" + props.imprintLink + "';
+            var nrc_privacy_link = '" + props.privacyLink + "';
+            var nrc_imprint_label = '" + imprint.properties.title + "';
+            var nrc_privacy_label = '" + privacy.properties.title + "';
+            var nrc_btn_all = '" + I18n.translate('NeosRulez.React.CookieOptIn:Component.Modal:btn_all') + "';
+            var nrc_btn_essential = '" + I18n.translate('NeosRulez.React.CookieOptIn:Component.Modal:btn_essential') + "';
+            var nrc_btn_selected = '" + I18n.translate('NeosRulez.React.CookieOptIn:Component.Modal:btn_selected') + "';
+            var nrc_btn_revoke = '" + I18n.translate('NeosRulez.React.CookieOptIn:Component.Modal:btn_revoke') + "';
+        "}</script>
+    `
 }

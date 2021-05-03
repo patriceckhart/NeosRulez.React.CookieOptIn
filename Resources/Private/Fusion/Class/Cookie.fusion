@@ -1,0 +1,3 @@
+prototype(NeosRulez.React.CookieOptIn:Class.Cookie) {
+    @class = 'NeosRulez\\React\\CookieOptIn\\Fusion\\CookieFusion'
+}

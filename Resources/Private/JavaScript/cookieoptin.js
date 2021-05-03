@@ -132,15 +132,15 @@ class Footer extends React.Component {
     render() {
         return <div><div className="row align-items-center">
             <div className="col-md-6">
-                <a href="/allow-essential" className="btn btn-secondary btn-block mt-3" id="allow__essential" onClick={this.setEssential} >{nrc_btn_essential}</a>
+                <a href="/allow-essential" className="btn btn-secondary btn-block w-100 mt-3" id="allow__essential" onClick={this.setEssential} >{nrc_btn_essential}</a>
             </div>
             <div className="col-md-6">
-                <a href="/allow-all-cookies" className="btn btn-primary btn-block mt-3" id="allow__all" onClick={this.setAll} >{nrc_btn_all}</a>
+                <a href="/allow-all-cookies" className="btn btn-primary btn-block w-100 mt-3" id="allow__all" onClick={this.setAll} >{nrc_btn_all}</a>
             </div>
         </div>
             <div className="row align-items-center mt-3">
                 <div className="col-md-6">
-                    <a href="/allow-selected" id="allow__selected" onClick={this.setSelected} >{nrc_btn_selected}</a>
+                    <a href="/allow-selected" style={settedCookies.length === 0 ? { display: 'none' } : { display: 'block' }} id="allow__selected" onClick={this.setSelected} >{nrc_btn_selected}</a>
                 </div>
                 <div className="col-md-6 text-right cookiebanner-links">
                     <a href={nrc_imprint_link}>{nrc_imprint_label}</a>
@@ -151,6 +151,8 @@ class Footer extends React.Component {
     }
 }
 
+var settedCookies = [];
+
 class Revoke extends React.Component {
     constructor(props) {
         super(props);
@@ -158,12 +160,12 @@ class Revoke extends React.Component {
     }
     revoke(e) {
         e.preventDefault();
-
+        settedCookies = [];
         document.cookie = "_nrc=revoked";
         initCookieBanner();
     }
     render() {
-        return <a href="/revoke" id="revoke" onClick={this.revoke} >Cookie-Einstellungen</a>;
+        return <a href="/revoke" id="revoke" onClick={this.revoke} >{nrc_btn_revoke}</a>;
     }
 }
 
@@ -173,25 +175,27 @@ class UserCookies extends React.Component {
     }
 }
 
-const settedCookies = [];
-
 class ToggleSwitch extends React.Component {
     constructor(props) {
         super(props);
         this.setter = this.setter.bind(this);
     }
     setter(cookieKey) {
-
         if(settedCookies.includes(`${cookieKey}`)) {
             const index = settedCookies.indexOf(`${cookieKey}`);
             settedCookies.splice(index, 1);
         } else {
             settedCookies.push(`${cookieKey}`);
         }
+        if (settedCookies.length === 0) {
+            document.getElementById('allow__selected').style.display = 'none';
+        } else {
+            document.getElementById('allow__selected').style.display = 'block';
+        }
     }
     render() {
         return <div className="custom-control custom-switch">
-            <input type="checkbox" className="custom-control-input" disabled={this.props.identifier == 'essential' ? true : false} id={this.props.identifier} defaultChecked={this.props.identifier == 'essential' ? true : false} />
+            <input type="checkbox" className="custom-control-input" disabled={this.props.identifier == 'essential' ? true : false} id={this.props.identifier} defaultChecked={this.props.identifier == 'essential' ? true : false} onClick={() => this.setter(`${this.props.identifier}`)} />
             <label className="custom-control-label" htmlFor={this.props.identifier} onClick={() => this.setter(`${this.props.identifier}`)}></label>
         </div>;
     }

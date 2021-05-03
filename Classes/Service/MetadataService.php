@@ -43,8 +43,11 @@ class MetadataService {
      * @return array
      */
     function loadMetaData() {
-        $metadata_path = $this->settings['metadata'].$this->getLanguage().'/cookies.yml';
-        $fileName = sprintf($metadata_path);
+        $metadata_path = $this->settings['metadata'].$this->getLanguage() . '/cookies.yml';
+        $fileName = sprintf($this->settings['metadata'] . 'en/cookies.yml');
+        if(file_exists($metadata_path)) {
+            $fileName = sprintf($metadata_path);
+        }
         return (array) Yaml::parseFile($fileName);
     }
 

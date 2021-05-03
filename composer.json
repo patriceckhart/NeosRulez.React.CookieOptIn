@@ -4,9 +4,7 @@
     "name": "neosrulez/react-cookieoptin",
     "require": {
         "neos/neos": "*",
-        "neosrulez/reactjs": "*",
-        "neosrulez/scssparser": "*",
-        "neosrulez/jsminifier": "*"
+        "neosrulez/reactjs": "*"
     },
     "autoload": {
         "psr-4": {

@@ -202,7 +202,7 @@ var Footer = function (_React$Component2) {
                         { className: 'col-md-6' },
                         React.createElement(
                             'a',
-                            { href: '/allow-essential', className: 'btn btn-secondary btn-block mt-3', id: 'allow__essential', onClick: this.setEssential },
+                            { href: '/allow-essential', className: 'btn btn-secondary btn-block w-100 mt-3', id: 'allow__essential', onClick: this.setEssential },
                             nrc_btn_essential
                         )
                     ),
@@ -211,7 +211,7 @@ var Footer = function (_React$Component2) {
                         { className: 'col-md-6' },
                         React.createElement(
                             'a',
-                            { href: '/allow-all-cookies', className: 'btn btn-primary btn-block mt-3', id: 'allow__all', onClick: this.setAll },
+                            { href: '/allow-all-cookies', className: 'btn btn-primary btn-block w-100 mt-3', id: 'allow__all', onClick: this.setAll },
                             nrc_btn_all
                         )
                     )
@@ -224,7 +224,7 @@ var Footer = function (_React$Component2) {
                         { className: 'col-md-6' },
                         React.createElement(
                             'a',
-                            { href: '/allow-selected', id: 'allow__selected', onClick: this.setSelected },
+                            { href: '/allow-selected', style: settedCookies.length === 0 ? { display: 'none' } : { display: 'block' }, id: 'allow__selected', onClick: this.setSelected },
                             nrc_btn_selected
                         )
                     ),
@@ -250,6 +250,8 @@ var Footer = function (_React$Component2) {
     return Footer;
 }(React.Component);
 
+var settedCookies = [];
+
 var Revoke = function (_React$Component3) {
     _inherits(Revoke, _React$Component3);
 
@@ -266,7 +268,7 @@ var Revoke = function (_React$Component3) {
         key: 'revoke',
         value: function revoke(e) {
             e.preventDefault();
-
+            settedCookies = [];
             document.cookie = "_nrc=revoked";
             initCookieBanner();
         }
@@ -276,7 +278,7 @@ var Revoke = function (_React$Component3) {
             return React.createElement(
                 'a',
                 { href: '/revoke', id: 'revoke', onClick: this.revoke },
-                'Cookie-Einstellungen'
+                nrc_btn_revoke
             );
         }
     }]);
@@ -307,8 +309,6 @@ var UserCookies = function (_React$Component4) {
     return UserCookies;
 }(React.Component);
 
-var settedCookies = [];
-
 var ToggleSwitch = function (_React$Component5) {
     _inherits(ToggleSwitch, _React$Component5);
 
@@ -324,12 +324,16 @@ var ToggleSwitch = function (_React$Component5) {
     _createClass(ToggleSwitch, [{
         key: 'setter',
         value: function setter(cookieKey) {
-
             if (settedCookies.includes('' + cookieKey)) {
                 var index = settedCookies.indexOf('' + cookieKey);
                 settedCookies.splice(index, 1);
             } else {
                 settedCookies.push('' + cookieKey);
+            }
+            if (settedCookies.length === 0) {
+                document.getElementById('allow__selected').style.display = 'none';
+            } else {
+                document.getElementById('allow__selected').style.display = 'block';
             }
         }
     }, {
@@ -340,7 +344,9 @@ var ToggleSwitch = function (_React$Component5) {
             return React.createElement(
                 'div',
                 { className: 'custom-control custom-switch' },
-                React.createElement('input', { type: 'checkbox', className: 'custom-control-input', disabled: this.props.identifier == 'essential' ? true : false, id: this.props.identifier, defaultChecked: this.props.identifier == 'essential' ? true : false }),
+                React.createElement('input', { type: 'checkbox', className: 'custom-control-input', disabled: this.props.identifier == 'essential' ? true : false, id: this.props.identifier, defaultChecked: this.props.identifier == 'essential' ? true : false, onClick: function onClick() {
+                        return _this6.setter('' + _this6.props.identifier);
+                    } }),
                 React.createElement('label', { className: 'custom-control-label', htmlFor: this.props.identifier, onClick: function onClick() {
                         return _this6.setter('' + _this6.props.identifier);
                     } })

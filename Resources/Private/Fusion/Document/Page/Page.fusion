@@ -1,11 +1,13 @@
 prototype(Neos.Neos:Page) {
     head {
-        cookieOptInCss = NeosRulez.ScssParser:ScssFile
-        cookieOptInCss {
-            source = 'resource://NeosRulez.React.CookieOptIn/Private/Styles/styles.scss'
-            inline = FALSE
-            format = 'compressed'
-            outputFolder = 'resource://NeosRulez.React.CookieOptIn/Public/Styles/'
+        cookieOptInCss = Neos.Fusion:Tag {
+            tagName = 'link'
+            attributes {
+                rel = 'stylesheet'
+                href = Neos.Fusion:ResourceUri {
+                    path = 'resource://NeosRulez.React.CookieOptIn/Public/Styles/styles.min.css'
+                }
+            }
             @if.condition = NeosRulez.React.CookieOptIn:ModalHelper
         }
     }
