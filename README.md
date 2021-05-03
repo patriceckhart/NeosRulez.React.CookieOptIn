@@ -24,8 +24,8 @@ composer update
 Simply add the data attribute `data-cookieoptin` to your own tags. 
 If scripts should not be executed, the attribute `type="text/plain"` must also be added. These attributes are removed by the user when defining the cookie.
 
-```
-prototype(Acme.Package:CustomScript) < prototype(Neos.Neos:ContentComponent) {
+```neosfusion
+prototype(Acme.Package:CustomScript) < prototype(Neos.Fusion:Component) {
     renderer = afx`
         <script type="text/plain" data-cookieoptin="analysis">foo = 'bar';</script>
     `
