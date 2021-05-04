@@ -21,6 +21,7 @@
   &:hover { background: #cccccc; padding-bottom:0.5em; text-decoration: none; }
   &.overflow { margin-bottom:-3em; }
 }
+.form-check-input { float:right !important; }
 @media (max-width: 992px) {
   #cookiebanner { overflow-y: scroll;
     .cookiebanner-links { text-align: left !important; margin-top:0.5em;

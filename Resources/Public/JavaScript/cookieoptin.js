@@ -230,7 +230,7 @@ var Footer = function (_React$Component2) {
                     ),
                     React.createElement(
                         'div',
-                        { className: 'col-md-6 text-right cookiebanner-links' },
+                        { className: 'col-md-6 text-right text-end cookiebanner-links' },
                         React.createElement(
                             'a',
                             { href: nrc_imprint_link },
@@ -343,13 +343,11 @@ var ToggleSwitch = function (_React$Component5) {
 
             return React.createElement(
                 'div',
-                { className: 'custom-control custom-switch' },
-                React.createElement('input', { type: 'checkbox', className: 'custom-control-input', disabled: this.props.identifier == 'essential' ? true : false, id: this.props.identifier, defaultChecked: this.props.identifier == 'essential' ? true : false, onClick: function onClick() {
+                { className: 'custom-control form-check custom-switch form-switch' },
+                React.createElement('input', { type: 'checkbox', className: 'custom-control-input form-check-input', disabled: this.props.identifier == 'essential' ? true : false, id: this.props.identifier, defaultChecked: this.props.identifier == 'essential' ? true : false, onClick: function onClick() {
                         return _this6.setter('' + _this6.props.identifier);
                     } }),
-                React.createElement('label', { className: 'custom-control-label', htmlFor: this.props.identifier, onClick: function onClick() {
-                        return _this6.setter('' + _this6.props.identifier);
-                    } })
+                React.createElement('label', { className: 'custom-control-label form-check-label', htmlFor: this.props.identifier })
             );
         }
     }]);
@@ -414,7 +412,7 @@ var CookieGroupItem = function (_React$Component6) {
                     ),
                     React.createElement(
                         'div',
-                        { className: 'col-4 text-right' },
+                        { className: 'col-4 text-right text-end' },
                         React.createElement(ToggleSwitch, { identifier: this.props.group })
                     )
                 ),
@@ -467,7 +465,7 @@ for (var group in nrc_metadata) {
                 ),
                 React.createElement(
                     'div',
-                    { className: 'col-md-2 col-4 text-right' },
+                    { className: 'col-md-2 col-4 text-right text-end' },
                     cookielifetime
                 )
             )

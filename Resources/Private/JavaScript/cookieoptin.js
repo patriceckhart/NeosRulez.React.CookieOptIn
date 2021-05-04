@@ -142,7 +142,7 @@ class Footer extends React.Component {
                 <div className="col-md-6">
                     <a href="/allow-selected" style={settedCookies.length === 0 ? { display: 'none' } : { display: 'block' }} id="allow__selected" onClick={this.setSelected} >{nrc_btn_selected}</a>
                 </div>
-                <div className="col-md-6 text-right cookiebanner-links">
+                <div className="col-md-6 text-right text-end cookiebanner-links">
                     <a href={nrc_imprint_link}>{nrc_imprint_label}</a>
                     <a href={nrc_privacy_link}>{nrc_privacy_label}</a>
                 </div>
@@ -194,9 +194,9 @@ class ToggleSwitch extends React.Component {
         }
     }
     render() {
-        return <div className="custom-control custom-switch">
-            <input type="checkbox" className="custom-control-input" disabled={this.props.identifier == 'essential' ? true : false} id={this.props.identifier} defaultChecked={this.props.identifier == 'essential' ? true : false} onClick={() => this.setter(`${this.props.identifier}`)} />
-            <label className="custom-control-label" htmlFor={this.props.identifier} onClick={() => this.setter(`${this.props.identifier}`)}></label>
+        return <div className="custom-control form-check custom-switch form-switch">
+            <input type="checkbox" className="custom-control-input form-check-input" disabled={this.props.identifier == 'essential' ? true : false} id={this.props.identifier} defaultChecked={this.props.identifier == 'essential' ? true : false} onClick={() => this.setter(`${this.props.identifier}`)} />
+            <label className="custom-control-label form-check-label" htmlFor={this.props.identifier}></label>
         </div>;
     }
 }
@@ -227,7 +227,7 @@ class CookieGroupItem extends React.Component {
                         <span key={this.props.group} onClick={() => this.toggleGroup(`${this.props.group}`)} >{this.props.title}</span>
                     </div>
                 </div>
-                <div className="col-4 text-right">
+                <div className="col-4 text-right text-end">
                     <ToggleSwitch identifier={this.props.group} />
                 </div>
             </div>
@@ -261,7 +261,7 @@ for(var group in nrc_metadata) {
             <div className="row">
                 <div className="col-md-2 col-12">{cookiekey}</div>
                 <div className="col-md-8 col-8">{cookiedescription}</div>
-                <div className="col-md-2 col-4 text-right">{cookielifetime}</div>
+                <div className="col-md-2 col-4 text-right text-end">{cookielifetime}</div>
             </div>
         </div>);
     }
